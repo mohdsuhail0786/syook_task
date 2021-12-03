@@ -1,19 +1,5 @@
 const jwt=require('jsonwebtoken');
 
-exports.getResponseMessage=(statusCode,message)=>{
-    return {
-        statusCode,
-        message
-    }
-}
-
-exports.getErrorMessage=(statusCode,error)=>{
-    return {
-        statusCode,
-        error
-    }
-}
-
 exports.generateAccessToken=(payload,token_secret)=>{
     return jwt.sign(payload,token_secret,{expiresIn:'1h'});
 }
