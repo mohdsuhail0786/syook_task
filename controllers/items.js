@@ -2,6 +2,7 @@ const items = require("../models/items");
 const HttpStatus = require("http-status-codes");
 
 exports.addItem = (req,res)=>{
+    logger.debug("inside add item api");
     const {name,price} = req.body;
     items.findOne({name})
     .then((result)=>{
@@ -19,6 +20,7 @@ exports.addItem = (req,res)=>{
 }
 
 exports.getAllItems = (req,res)=>{
+    logger.debug("inside get all item api");
     items.find()
     .then((result)=>{
         res.status(HttpStatus.OK).json(result);
@@ -29,6 +31,7 @@ exports.getAllItems = (req,res)=>{
 }
 
 exports.getItemByName = (req,res)=>{
+    logger.debug("inside get item by name api");
     const {name} = req.query;
     items.findOne({name})
     .then((result)=>{
@@ -43,6 +46,7 @@ exports.getItemByName = (req,res)=>{
 }
 
 exports.updateItem = (req,res)=>{
+    logger.debug("inside update item api");
     const {name,price} = req.body;
     items.findOne({name})
     .then((result)=>{

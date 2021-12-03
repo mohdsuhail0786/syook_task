@@ -1,7 +1,9 @@
 const deliveryVehicles = require("../models/deliveryVehicles");
 const HttpStatus = require("http-status-codes");
+const logger = require("../utils/logger");
 
 exports.addDeliveryVehicle = (req,res)=>{
+    logger.debug("inside add vehicle api");
     const {registrationNumber,vehicleType,city} = req.body;
     deliveryVehicles.findOne({registrationNumber})
     .then((result)=>{
@@ -19,6 +21,7 @@ exports.addDeliveryVehicle = (req,res)=>{
 }
 
 exports.getAllVehicles = (req,res)=>{
+    logger.debug("inside get all vehicle api");
     deliveryVehicles.find()
     .then((vehicles)=>{
         res.status(HttpStatus.OK).json({message:"Vehicles data fetched successfully.",vehicles});
@@ -29,6 +32,7 @@ exports.getAllVehicles = (req,res)=>{
 }
 
 exports.getVehicleByRegistrationNumber = (req,res)=>{
+    logger.debug("inside get vehicle by regno api");
     const registrationNumber = req.query;
     deliveryVehicles.findOne({registrationNumber})
     .then((vehicle)=>{
@@ -43,6 +47,7 @@ exports.getVehicleByRegistrationNumber = (req,res)=>{
 }
 
 exports.updateVehicle = (req,res)=>{
+    logger.debug("inside update vehicle api");
     const {registrationNumber,vehicleType,city} = req.body;
     deliveryVehicles.findOne({registrationNumber})
     .then((vehicle)=>{

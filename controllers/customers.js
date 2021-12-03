@@ -3,7 +3,7 @@ const HttpStatus = require("http-status-codes");
 const logger = require("../utils/logger");
 
 exports.addCustomer = (req,res)=>{
-    logger.debug();
+    logger.debug("inside add customer api");
     const {name,city} = req.body;
     customers.findOne({name})
     .then((cust)=>{
@@ -21,6 +21,7 @@ exports.addCustomer = (req,res)=>{
 }
 
 exports.getAllCustomers = (req,res)=>{
+    logger.debug("inside get all customer api");
     customers.find()
     .then((data)=>{
         res.status(HttpStatus.OK).json({message: "customers data fetched successfully", customersList:data});
@@ -31,6 +32,7 @@ exports.getAllCustomers = (req,res)=>{
 }
 
 exports.getCustomerByName = (req,res)=>{
+    logger.debug("inside get customer by name api");
     const {name} = req.query;
     customers.findOne({name})
     .then((result)=>{
@@ -45,6 +47,7 @@ exports.getCustomerByName = (req,res)=>{
 }
 
 exports.updateCustomer = (req,res)=>{
+    logger.debug("inside update customer api");
     const {name,city} = req.body;
     customers.findOne({name})
     .then((result)=>{
