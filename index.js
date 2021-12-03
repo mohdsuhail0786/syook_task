@@ -5,11 +5,15 @@ const port = process.env.PORT || '6786';
 const { mongoConnect } = require('./utils/dbutils');
 const cors=require('cors');
 const logger = require('./utils/logger');
+const itemsRouter = require("./routes/items");
+const custRouter = require("./routes/customers");
+const vehiclesRouter = require("./routes/deliveryVehicles");
 
-
-app.use(express.json());
 app.use(cors());
-
+app.use(express.json());
+app.use("/items",itemsRouter);
+app.use("/customer",custRouter);
+app.use("/vehicles",vehiclesRouter);
 
 app.listen(port, () => {
   logger.info(`App listening on port : http://localhost:${port}!`)

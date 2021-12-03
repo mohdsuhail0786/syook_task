@@ -1,7 +1,7 @@
 const items = require("../models/items");
 const HttpStatus = require("http-status-codes");
 
-export const addItem = (req,res)=>{
+exports.addItem = (req,res)=>{
     const {name,price} = req.body;
     items.findOne({name})
     .then((result)=>{
@@ -18,7 +18,7 @@ export const addItem = (req,res)=>{
     })
 }
 
-export const getAllItems = (req,res)=>{
+exports.getAllItems = (req,res)=>{
     items.find()
     .then((result)=>{
         res.status(HttpStatus.OK).json(result);
@@ -28,7 +28,7 @@ export const getAllItems = (req,res)=>{
     })
 }
 
-export const getItemByName = (req,res)=>{
+exports.getItemByName = (req,res)=>{
     const {name} = req.query;
     items.findOne({name})
     .then((result)=>{
@@ -42,7 +42,7 @@ export const getItemByName = (req,res)=>{
     })
 }
 
-export const updateItem = (req,res)=>{
+exports.updateItem = (req,res)=>{
     const {name,price} = req.body;
     items.findOne({name})
     .then((result)=>{

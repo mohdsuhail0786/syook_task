@@ -1,7 +1,7 @@
 const deliveryVehicles = require("../models/deliveryVehicles");
 const HttpStatus = require("http-status-codes");
 
-export const addDeliveryVehicle = (req,res)=>{
+exports.addDeliveryVehicle = (req,res)=>{
     const {registrationNumber,vehicleType,city} = req.body;
     deliveryVehicles.findOne({registrationNumber})
     .then((result)=>{
@@ -18,7 +18,7 @@ export const addDeliveryVehicle = (req,res)=>{
     })
 }
 
-export const getAllVehicles = (req,res)=>{
+exports.getAllVehicles = (req,res)=>{
     deliveryVehicles.find()
     .then((vehicles)=>{
         res.status(HttpStatus.OK).json({message:"Vehicles data fetched successfully.",vehicles});
@@ -28,7 +28,7 @@ export const getAllVehicles = (req,res)=>{
     })
 }
 
-export const getVehicleByRegistrationNumber = (req,res)=>{
+exports.getVehicleByRegistrationNumber = (req,res)=>{
     const registrationNumber = req.query;
     deliveryVehicles.findOne({registrationNumber})
     .then((vehicle)=>{
@@ -42,7 +42,7 @@ export const getVehicleByRegistrationNumber = (req,res)=>{
     })
 }
 
-export const updateVehicle = (req,res)=>{
+exports.updateVehicle = (req,res)=>{
     const {registrationNumber,vehicleType,city} = req.body;
     deliveryVehicles.findOne({registrationNumber})
     .then((vehicle)=>{

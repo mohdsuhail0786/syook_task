@@ -1,7 +1,9 @@
 const customers = require("../models/customers");
 const HttpStatus = require("http-status-codes");
+const logger = require("../utils/logger");
 
-export const addCustomer = (req,res)=>{
+exports.addCustomer = (req,res)=>{
+    logger.debug();
     const {name,city} = req.body;
     customers.findOne({name})
     .then((cust)=>{
@@ -18,7 +20,7 @@ export const addCustomer = (req,res)=>{
     })
 }
 
-export const getAllCustomers = (req,res)=>{
+exports.getAllCustomers = (req,res)=>{
     customers.find()
     .then((data)=>{
         res.status(HttpStatus.OK).json({message: "customers data fetched successfully", customersList:data});
@@ -28,7 +30,7 @@ export const getAllCustomers = (req,res)=>{
     })
 }
 
-export const getCustomerByName = (req,res)=>{
+exports.getCustomerByName = (req,res)=>{
     const {name} = req.query;
     customers.findOne({name})
     .then((result)=>{
@@ -42,7 +44,7 @@ export const getCustomerByName = (req,res)=>{
     })
 }
 
-export const updateCustomer = (req,res)=>{
+exports.updateCustomer = (req,res)=>{
     const {name,city} = req.body;
     customers.findOne({name})
     .then((result)=>{
