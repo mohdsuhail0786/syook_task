@@ -12,13 +12,13 @@ Step2: run "npm i"
 Step3: setup .env file in the root folder and paste the below data into it
 
 
-  MONGO_URI=mongodb+srv://syook:syook@cluster0.q8d9c.mongodb.net/logistics?retryWrites=true&w=majority
+  MONGO_URI= ``` Your mongodb connection uri ```
   
   
   PORT=6785
   
   
-  TOKEN_SECRET=+URReqfmHK+7+43U0arlud4K2y+AL1uciXFnbQFjDI=roGwE4alzwhkONzXfy8m+ChMRb4=tIASY9TsKODDlECi70a51hcKHVhFF1cfqbzOqu6Xt1WW=QmXWHo0nGKiZ8T5NkXI2txYGyeu2NLYsY4eXDH8GKQ7VkNbw
+  TOKEN_SECRET= ``` a random value for token secret ```
   
   
 Step4: run "npm start" command
