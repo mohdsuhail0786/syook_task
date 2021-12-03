@@ -13,9 +13,11 @@ exports.addDeliveryVehicle = (req,res)=>{
             return deliveryVehicles.create({registrationNumber,vehicleType,city});
     })
     .then((savedVehicle)=>{
+        logger.debug("Delivery Vehicle added successfully.");
         res.status(HttpStatus.OK).json({message:"Delivery Vehicle added successfully.",vehicle: savedVehicle});
     })
     .catch((err)=>{
+        logger.error(err.message);
         res.status(HttpStatus.BAD_REQUEST).json({error: err.message});
     })
 }
@@ -24,9 +26,11 @@ exports.getAllVehicles = (req,res)=>{
     logger.debug("inside get all vehicle api");
     deliveryVehicles.find()
     .then((vehicles)=>{
+        logger.debug("Vehicles data fetched successfully.");
         res.status(HttpStatus.OK).json({message:"Vehicles data fetched successfully.",vehicles});
     })
     .catch((err)=>{
+        logger.error(err.message);
         res.status(HttpStatus.BAD_REQUEST).json({error: err.message});  
     })
 }
@@ -38,10 +42,13 @@ exports.getVehicleByRegistrationNumber = (req,res)=>{
     .then((vehicle)=>{
         if(vehicle==null)
             return Promise.reject(new Error("Vehicle info not found"));
-        else
+        else{
+            logger.debug("Vehicle data fetched successfully");
             res.status(HttpStatus.OK).json({message:"Vehicle data fetched successfully",vehicle});
+        }
     })
     .catch((err)=>{
+        logger.error(err.message);
         res.status(HttpStatus.BAD_REQUEST).json({error: err.message});
     })
 }
@@ -57,9 +64,11 @@ exports.updateVehicle = (req,res)=>{
             deliveryVehicles.updateOne({registrationNumber},{$set:{vehicleType:vehicleType, city:city}},{new: true});
     })
     .then((updatedVehicle)=>{
+        logger.debug("Vehicle updated successfully");
         res.status(HttpStatus.OK).json({message:"Vehicle updated successfully", updatedVehicle});
     })
     .catch((err)=>{
+        logger.error(err.message);
         res.status(HttpStatus.BAD_REQUEST).json({error: err.message});
     })
 }
