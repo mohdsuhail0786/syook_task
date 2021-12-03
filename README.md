@@ -1,6 +1,6 @@
 # syook_task
 
-#TO RUN THIS PROJECT FOLLOW SOME BELOW MENTIONED STEPS
+# TO RUN THIS PROJECT FOLLOW SOME BELOW MENTIONED STEPS
 
 
 Step1: clone this repo into your system
@@ -23,17 +23,17 @@ Step3: setup .env file in the root folder and paste the below data into it
   
 Step4: run "npm start" command
 
-#PREREQUISITES
+# PREREQUISITES
 
 
 must have installed nodejs, npm in the system
 
-#HOW TO USE API's
+# HOW TO USE API's
 
 1. first you have to create a access token and then send that token to the header of every API with key as "token" and value as the token generated.
 
 
-#API'S
+# API'S
 
 1. http://localhost:6785/accessToken/new
 
